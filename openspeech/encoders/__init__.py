@@ -22,11 +22,11 @@
 
 from .conformer_encoder import ConformerEncoder
 from .contextnet_encoder import ContextNetEncoder
+from .openspeech_encoder import OpenspeechEncoder
 from .convolutional_lstm_encoder import ConvolutionalLSTMEncoder
 from .convolutional_transformer_encoder import ConvolutionalTransformerEncoder
 from .jasper import Jasper
 from .lstm_encoder import LSTMEncoder
-from .openspeech_encoder import OpenspeechEncoder
 from .rnn_transducer_encoder import RNNTransducerEncoder
 from .squeezeformer_encoder import SqueezeformerEncoder
 from .transformer_encoder import TransformerEncoder

@@ -31,7 +31,9 @@ from torch.optim import ASGD, SGD, Adadelta, Adagrad, Adam, Adamax, AdamW
 
 from openspeech.criterion import CRITERION_REGISTRY
 from openspeech.metrics import CharacterErrorRate, WordErrorRate
-from openspeech.optim import AdamP, Novograd, RAdam
+from openspeech.optim.adamp import AdamP
+from openspeech.optim.novograd import Novograd
+from openspeech.optim.radam import RAdam
 from openspeech.optim.scheduler import SCHEDULER_REGISTRY
 from openspeech.tokenizers.tokenizer import Tokenizer
 
