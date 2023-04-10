@@ -53,6 +53,9 @@ def hydra_main(configs: DictConfig) -> None:
     audio_paths, transcripts = load_dataset(configs.eval.manifest_file_path)
     tokenizer = TOKENIZER_REGISTRY[configs.tokenizer.unit](configs)
 
+    ## Soomin Lee : min001017@hanyang.ac.kr
+    configs.model.encoder_dropout_p = 0.0
+    configs.model.decoder_dropout_p = 0.0
     model = MODEL_REGISTRY[configs.model.model_name]
     model = model.load_from_checkpoint(configs.eval.checkpoint_path, configs=configs, tokenizer=tokenizer)
     model.to(device)

@@ -85,7 +85,7 @@ except ImportError:
     raise ValueError(PYTORCH_LIGHTNING_IMPORT_ERROR)
 
 DUMMY_SIGNALS, _ = librosa.load(librosa.ex("choice"))
-DUMMY_FEATURES = librosa.feature.melspectrogram(DUMMY_SIGNALS, n_mels=80)
+DUMMY_FEATURES = librosa.feature.melspectrogram(y=DUMMY_SIGNALS, n_mels=80)
 DUMMY_INPUTS = torch.FloatTensor(DUMMY_FEATURES).transpose(0, 1).unsqueeze(0).expand(3, -1, -1)
 DUMMY_INPUT_LENGTHS = torch.IntTensor([1070, 900, 800])
 DUMMY_TARGETS = torch.LongTensor(
@@ -412,7 +412,7 @@ def build_dummy_configs(
 
     if vocab_configs is None:
         vocab_configs = KsponSpeechCharacterTokenizerConfigs()
-        vocab_configs.vocab_path = "labels.csv"
+        vocab_configs.vocab_path = "aihub_labels.csv"
 
     if criterion_configs is None:
         criterion_configs = CrossEntropyLossConfigs
@@ -429,7 +429,7 @@ def build_dummy_configs(
     return DotDict(
         {
             "model": model_configs,
-            "vocab": vocab_configs,
+            "tokenizer": vocab_configs,
             "criterion": criterion_configs,
             "trainer": trainer_configs,
             "audio": audio_configs,
